@@ -11,6 +11,7 @@ public class Driver {
         System.out.println("============Main Execution Start===================\n\n");
 
         //your driver code here
+        StockMarket.demo();
 
         System.out.println("============Main Execution End===================");
    
