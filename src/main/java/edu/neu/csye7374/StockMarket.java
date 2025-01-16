@@ -52,12 +52,14 @@ class StockMarket {
         Stock autoStock = new AutoStock("Tesla", 720.50, "Tesla Auto Stock");
         Stock financeStock = new FinanceStock("Chase", 420.50, "Chase Finance Stock");
         Stock energyStock = new EnergyStock("NationalGrid", 290.50, "NationalGrid Energy Stock");
+        Stock semiConductorStock = new SemiconductorStock("AMD", 119.10, "AMD Semiconductor Stock");
 
         market.addStock(techStock);
         market.addStock(pharmaStock);
         market.addStock(autoStock);
         market.addStock(financeStock);
         market.addStock(energyStock);
+        market.addStock(semiConductorStock);
 
         String[] bids = {"10", "20", "30", "40", "50", "60"};
 
@@ -71,6 +73,12 @@ class StockMarket {
             market.showAllStocks();
             System.out.println();
         }
+
+        String[] amdBids = {"119", "118.20", "115.30", "120.12", "136.47", "129.23"};
+        for (String bid : amdBids) {
+            market.tradeStock("AMD", bid);
+        }
+
         market.removeStock("IBM");
         market.removeStock("Pfizer");
         System.out.println("After removing the stocks we are left with - ");
