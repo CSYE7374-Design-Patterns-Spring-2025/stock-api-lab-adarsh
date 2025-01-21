@@ -24,6 +24,7 @@ class StockMarket {
 
     public void addStock(Stock stock) {
         stocks.put(stock.name, stock);
+        System.out.println("Stock added: " + stock.name);
     }
 
     public void removeStock(String name) {
@@ -54,12 +55,16 @@ class StockMarket {
         Stock energyStock = new EnergyStock("NationalGrid", 290.50, "NationalGrid Energy Stock");
         Stock semiConductorStock = new SemiconductorStock("AMD", 119.10, "AMD Semiconductor Stock");
 
+
+
         market.addStock(techStock);
         market.addStock(pharmaStock);
         market.addStock(autoStock);
         market.addStock(financeStock);
         market.addStock(energyStock);
         market.addStock(semiConductorStock);
+
+
 
         String[] bids = {"10", "20", "30", "40", "50", "60"};
 
@@ -79,10 +84,26 @@ class StockMarket {
             market.tradeStock("AMD", bid);
         }
 
+//      SPDR S&P Stock (Natural Resource) - trading simulation
+        Stock naturalResourceStock = new NaturalResourceStock("SPDRS&P", 120.45, "SPDR S&P North American Natural Resources ETF");
+        System.out.println(naturalResourceStock.toString());
+        market.addStock(naturalResourceStock);
+
+        String[] SPDRBids = {"118.5", "119.25", "125.00", "123.20", "114.23", "117.17"};
+        for (String bid : SPDRBids) {
+            market.tradeStock("SPDRS&P", bid);
+        }
+        System.out.printf("Final price of SPDRS&P after 6 bids is %.2f\n",naturalResourceStock.price);
+
+
         market.removeStock("IBM");
         market.removeStock("Pfizer");
         System.out.println("After removing the stocks we are left with - ");
         market.showAllStocks();
 
+    }
+
+    public static void main(String[] args) {
+        demo();
     }
 }

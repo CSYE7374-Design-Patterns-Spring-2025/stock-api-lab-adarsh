@@ -22,6 +22,7 @@ abstract class Stock implements Tradable {
             double bidValue = Double.parseDouble(bid);
             bids.add(bidValue);
             price = calculateNewPrice(bidValue);
+            System.out.printf("New price of "+name+" after adding bid "+bid+" is %.2f\n", price);
         } catch (NumberFormatException e) {
             System.out.println("Invalid bid: " + bid);
         }
